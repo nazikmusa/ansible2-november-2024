@@ -1,0 +1,14 @@
+- hosts: all
+  become: yes
+  vars:
+    package: apache2
+  tasks:
+  - name: Install apache
+    ansible.builtin.apt:
+      name: "{{ package }}"
+
+  - name: Start apache
+    ansible.builtin.service:
+      name: "{{ package }}"
+      state: started
+      enabled: yes      
