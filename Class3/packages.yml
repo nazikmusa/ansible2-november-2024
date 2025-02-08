@@ -3,7 +3,6 @@
     name: 
       - ghostscript
       - libapache2-mod-php
-      - mysql-server
       - php
       - php-bcmath
       - php-curl 
