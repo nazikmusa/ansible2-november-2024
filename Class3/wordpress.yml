@@ -1,12 +1,26 @@
 - name: Download wordpress
   ansible.builtin.get_url:
     url: https://wordpress.org/latest.tar.gz
-    dest: /tmp
+    dest: /tmp/wordpress.tar.gz
     
-- name: Extract foo.tgz into /var/lib/foo
+- name: Extract wordpress
   ansible.builtin.unarchive:
-    src: /tmp/wordpress-6.7.1.tar.gz
+    src: /tmp/wordpress.tar.gz
     dest: /tmp   
     remote_src: yes 
 
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: /tmp/wordpress/.
+    dest: /var/www/html
+    owner: www-data
+    group: www-data
+    mode: '0755'    
+    remote_src: yes 
+
+
+- name: Remove index.html
+  ansible.builtin.file:
+    path: /var/www/html/index.html
+    state: absent  
 
