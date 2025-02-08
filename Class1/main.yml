@@ -1,8 +1,17 @@
 - hosts: localhost
   become: yes
   tasks:
-  - name: Install apache
+  - name: Install packages
     ansible.builtin.apt:
+      name: 
+        - apache2
+        - tree
+        - unzip
+      state: present
+      update_cache: yes
+      
+  - name: Start apache
+    ansible.builtin.service:
       name: apache2
-      state: latest
-      enabled: yes 
+      state: started
+      enabled: yes    
