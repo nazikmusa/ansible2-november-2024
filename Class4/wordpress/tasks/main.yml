@@ -26,6 +26,6 @@
 
 
 - name: Copy file wp-config.php
-  ansible.builtin.copy:
-    src: wp-config.php
-    dest: /var/www/html
+  ansible.builtin.template:
+    src: /home/ubuntu/ansible2-november-2024/Class4/wordpress/templates/wp-config.php.j2
+    dest: /var/www/html/wp-config.php
