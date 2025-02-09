@@ -1,0 +1,11 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: Install packages
+    ansible.builtin.apt:
+      name:
+        - apache2
+        - tree
+        - unzip
+      state: present
+      update_cache: yes
